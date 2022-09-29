@@ -24,3 +24,25 @@ myLibrary.push(new Book('Greenlights', 'Matthew McConaughey', 200, false));
 myLibrary.push(new Book('A Promised Land', 'Barack Obama', 200, false));
 myLibrary.push(new Book('The Food Lab', 'J. Kenji Lopez-Alt', 200, false));
 
+//DOM manipulation
+const container = document.querySelector('#container')
+
+//Display Card on DOM
+function displayBook(arrayIndex){
+  const newCard = document.createElement('div')
+
+  //Creates text for describing the book
+  const p = document.createElement('p')
+  newCard.className = 'bookCard'
+  newCard.setAttribute("data-index", `${arrayIndex}`)
+  p.textContent = `${myLibrary[arrayIndex].title} by ${myLibrary[arrayIndex].author}, ${myLibrary[arrayIndex].pages} pages, ${myLibrary[arrayIndex].haveRead === true ? "Read" : "Not Read"}`;
+  newCard.appendChild(p)
+
+  //adds everything to the html
+  container.appendChild(newCard)
+}
+
+for (let i = 0; i < myLibrary.length; i++){
+  displayBook(i)
+}
+
